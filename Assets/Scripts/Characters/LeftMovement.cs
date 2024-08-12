@@ -6,6 +6,11 @@ public class LeftMovement : MonoBehaviour
 {
     private void FixedUpdate()
     {
-        transform.position = new Vector2(transform.position.x - (GameManager.Instance.TimeMultiplier * GameManager.Instance.moveSpeed), transform.position.y);
+        if(!GameManager.Instance.isPaused)
+        {
+            Vector2 newPos = transform.position;
+            newPos.x -= GameManager.Instance.MoveSpeed;
+            transform.position = newPos;
+        }
     }
 }
